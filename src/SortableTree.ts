@@ -146,6 +146,10 @@ export class SortableTree {
 	destroy(): void {
 		this.observer.disconnect();
 		this.observer = null;
+
+		while (this.root.lastChild) {
+			this.root.removeChild(this.root.lastChild);
+		}		
 	}
 
 	initStateObserver(stateId: string): void {

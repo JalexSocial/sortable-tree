@@ -67,9 +67,16 @@ export const applyState = (
 		});
 	};
 
-	data.forEach((nodeData, index) => {
-		walk(nodeData, state[index]);
-	});
+	if (data.length == state.length)
+	{
+		data.forEach((nodeData, index) => {
+			walk(nodeData, state[index]);
+		});
+	}
+	else
+	{
+		saveState(stateId, data);
+	}
 };
 
 const createStateId = (id: string): string => {
